@@ -7,137 +7,161 @@
 /* --- 1. Tablet & Small Desktop (ต่ำกว่า 1024px) --- */
 @media (max-width: 1024px) {
     .container {
-        width: 92%;
+        width: 100%; /* ใช้ความกว้างเต็มแต่มี Padding จาก main.css คุมไว้ */
+        padding: 0 30px;
     }
     
     .grid-3 {
-        grid-template-columns: repeat(2, 1fr); /* ปรับจาก 3 เหลือ 2 คอลัมน์ */
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์สำหรับ Tablet */
+        gap: 25px;
     }
 
     .story-container {
-        padding: 40px 25px;
+        padding: 50px 30px;
+        margin-top: -80px;
+    }
+
+    .member-profile img {
+        max-width: 280px;
     }
 }
 
 /* --- 2. Mobile Landscape & Large Phone (ต่ำกว่า 768px) --- */
 @media (max-width: 768px) {
-    /* Navbar: ปรับให้รองรับการแสดงผลแนวตั้ง */
+    /* Layout Reset */
+    section {
+        padding: 60px 0;
+    }
+
+    /* Navbar: ปรับให้นิ่งสนิทและจัดวางกึ่งกลาง */
     .navbar {
+        height: auto;
+        min-height: 80px;
         flex-direction: column;
-        padding: 15px 5%;
-        text-align: center;
+        padding: 15px 0;
+    }
+
+    .navbar-inner {
+        flex-direction: column;
+        gap: 15px;
     }
 
     .navbar ul {
-        margin-top: 15px;
-        gap: 15px;
+        display: flex; /* แสดงเมนูแบบเรียงแถวในมือถือ (กรณีไม่มี Hamburger Menu) */
+        margin: 10px 0;
+        gap: 12px;
         flex-wrap: wrap;
         justify-content: center;
     }
 
     .navbar ul li a {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        padding: 5px 0;
     }
 
-    /* Hero Section: ปรับขนาดให้พอดีหน้าจอมือถือ */
-    .hero {
-        height: 60vh;
-        min-height: 400px;
-        background-attachment: scroll; /* ปิด parallax บนมือถือเพื่อลดการกระตุก */
+    .nav-cta {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Hero Section: ปรับให้สมดุลกับสายตาบนมือถือ */
+    .hero, .about-hero, .contact-hero {
+        height: auto;
+        min-height: 350px;
+        padding: 80px 0 120px;
+        background-attachment: scroll; /* ปิด parallax เพื่อความลื่นไหลบนมือถือ */
     }
 
     .hero-content h1 {
-        font-size: clamp(1.8rem, 6vw, 2.2rem);
+        font-size: 2.2rem;
     }
 
-    .hero-content p {
-        padding: 6px 20px;
-        font-size: 1rem;
-    }
-
-    /* Grid Layout: ปรับเป็น 1 คอลัมน์ทั้งหมด */
-    .grid-3, .grid-2, #reviews-container {
-        grid-template-columns: 1fr;
+    /* Grid Layout: บังคับเป็น 1 คอลัมน์ทั้งหมดเพื่อความนิ่ง */
+    .grid-3, .grid-2, #reviews-container, .contact-grid {
+        grid-template-columns: 1fr !important;
         gap: 20px;
     }
 
-    /* ส่วนเนื้อหาครอบครัวและสมาชิก */
-    .family-warmth-section {
-        margin-top: -40px;
+    /* เนื้อหาเรื่องราว */
+    .story-container {
+        margin-top: -60px;
         padding: 40px 20px;
+        border-radius: 30px;
     }
 
-    .member-card img {
-        width: 180px;
-        height: 180px;
+    .story-text {
+        font-size: 1.1rem;
+        text-indent: 0;
+        text-align: left;
     }
 
-    /* การ์ดติดต่อและแผนที่ในหน้า Contact */
-    .contact-grid {
-        grid-template-columns: 1fr;
-        margin-top: 20px;
+    .member-profile img {
+        max-width: 220px;
+        border-width: 8px;
     }
 
+    /* แผนที่และข้อมูลติดต่อ */
     .map-card {
-        height: 350px;
+        height: 300px;
+        order: 2; /* ย้ายแผนที่ไว้ด้านล่างข้อมูลติดต่อในมือถือ */
     }
 
-    /* Footer: ปรับให้ตัวหนังสืออยู่กึ่งกลาง */
+    .contact-info-card {
+        order: 1;
+    }
+
+    /* Footer: จัดกึ่งกลางเพื่อให้อ่านง่ายบนจอแคบ */
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 30px;
+        gap: 35px;
     }
 
-    /* Utilities: ทำให้ปุ่มกว้างเต็มหน้าจอเพื่อให้กดง่าย */
+    .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* ปรับปุ่มให้เหมาะกับนิ้วสัมผัส */
     .btn {
         width: 100%;
-        max-width: 300px;
-        margin: 10px auto;
+        max-width: 280px;
+        padding: 15px 25px;
     }
 }
 
 /* --- 3. Small Mobile (ต่ำกว่า 480px) --- */
 @media (max-width: 480px) {
     .section-title {
-        font-size: 1.6rem;
-        margin-bottom: 30px;
+        font-size: 1.8rem;
     }
 
-    .navbar .logo {
-        font-size: 1.2rem;
+    .brand-name {
+        font-size: 1.3rem;
     }
 
     .hero-content h1 {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
     }
 
-    /* ลด Padding ของ Section เพื่อให้เนื้อหากระชับ */
-    section {
-        padding: 50px 0;
+    .card {
+        padding: 25px 20px;
     }
 
-    .story-text {
-        font-size: 1.05rem;
-        text-align: left;
-        text-indent: 0;
+    .info-item {
+        gap: 15px;
     }
 
-    /* ปรับขนาดราคาในหน้าเมนูให้เด่นขึ้น */
-    .menu-item-price {
+    .info-icon {
+        width: 40px;
+        height: 40px;
         font-size: 1.1rem;
     }
 }
 
-/* --- 4. Special: Landscape Mode (หน้าจอแนวนอนที่มีความสูงน้อย) --- */
-@media (max-height: 500px) and (orientation: landscape) {
-    .hero {
-        height: auto;
-        padding: 80px 0;
-    }
-    
-    .navbar {
-        position: relative; /* ปิด sticky เพื่อไม่ให้บังเนื้อหาตอนหมุนจอ */
-    }
+/* --- 4. ป้องกันเนื้อหาไหลออกนอกจอ (Stability Fix) --- */
+* {
+    max-width: 100%;
+    overflow-wrap: break-word;
 }

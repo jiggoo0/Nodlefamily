@@ -1,27 +1,33 @@
 /**
  * assets/css/main.css
  * โครงสร้างหลัก (Core Layout) ของเว็บไซต์ ช.สหชัย เกี๊ยวปูหมูแดง
- * จัดการเรื่อง Reset, Grid, Navigation และสไตล์พื้นฐานของหน้าเว็บ
+ * ปรับปรุง: ระบบล็อกความกว้าง Container และป้องกันหน้าเว็บขยับ (Stable Version)
  */
 
 /* --- 1. Root Setup & Resets --- */
 :root {
-    /* ค่าเริ่มต้นสำรอง (Fallback) หาก theme.css ไม่ทำงาน */
     --primary-red: #b22222;
+    --primary-dark: #8b0000;
     --noodle-gold: #f1c40f;
     --dark-text: #333;
-    --light-gray: #f9f9f9;
+    --light-text: #666;
+    --warm-cream: #fffdf5;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
     --shadow-md: 0 4px 15px rgba(0,0,0,0.1);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* สำคัญ: ป้องกันการเพิ่มขนาดจาก Padding/Border */
 }
 
 html {
+    /* บังคับจองพื้นที่ Scrollbar เพื่อไม่ให้หน้าเว็บ "เขยิบ" เวลาเปลี่ยนหน้า */
+    overflow-y: scroll; 
     scroll-behavior: smooth;
+    width: 100%;
 }
 
 body {
@@ -30,57 +36,85 @@ body {
     font-size: 16px;
     overflow-x: hidden;
     color: var(--dark-text);
-    background-color: #fff;
+    background-color: #ffffff;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- 2. Layout Container --- */
+/* --- 2. Layout Container (The Master Control) --- */
+/* ล็อกความกว้างให้เท่ากันทุกหน้า */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;    /* จัดกึ่งกลางเป๊ะ */
+    padding: 0 20px;   /* ระยะกันชนขอบจอ */
 }
 
-/* --- 3. Navigation Bar --- */
+/* --- 3. Navigation Bar (Stable & Fixed) --- */
 .navbar {
+    height: 85px; /* ล็อกความสูงคงที่ทุกหน้า */
+    background-color: #ffffff;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
 
 .navbar .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 1.5rem;
+    gap: 12px;
+    font-size: 1.4rem;
     font-weight: bold;
     color: var(--primary-red);
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .navbar .logo img {
-    height: 45px;
+    height: 50px;
     width: auto;
+    object-fit: contain;
 }
 
 .navbar ul {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar ul li a {
     text-decoration: none;
-    color: #444;
+    color: var(--dark-text);
     font-weight: 500;
     font-size: 1.05rem;
-    transition: 0.3s ease;
+    transition: var(--transition);
+    position: relative;
+    padding: 8px 0;
+}
+
+/* เอฟเฟกต์เส้นใต้ให้นิ่ง ไม่เบียดตัวหนังสือ */
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary-red);
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a.active::after {
+    width: 100%;
 }
 
 .navbar ul li a:hover,
@@ -91,140 +125,89 @@ body {
 /* --- 4. Content Sections --- */
 section {
     padding: 80px 0;
+    width: 100%;
 }
 
 .section-title {
     text-align: center;
     margin-bottom: 50px;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 5vw, 2.8rem);
     color: var(--primary-red);
     font-weight: 700;
+    line-height: 1.2;
 }
 
-.section-subtitle {
-    text-align: center;
-    margin-top: -40px;
-    margin-bottom: 50px;
-    color: #666;
-    font-size: 1.1rem;
-}
-
-/* --- 5. Grid Systems --- */
+/* --- 5. Grid Systems (Locked Ratios) --- */
 .grid {
     display: grid;
     gap: 30px;
+    width: 100%;
 }
 
-/* Grid 3 คอลัมน์ (สำหรับเมนูอาหาร / บริการ) */
 .grid-3 {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
-/* Grid 2 คอลัมน์ (สำหรับข้อมูลครอบครัว / หน้า Contact) */
 .grid-2 {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
-/* --- 6. Review Cards (Dynamic Content) --- */
-#reviews-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+/* --- 6. Cards & UI Elements --- */
+.card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 30px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: var(--transition);
+    height: 100%;
 }
 
-.review-card {
-    background: #fff;
-    padding: 30px;
-    border-radius: 20px;
+.card:hover {
+    transform: translateY(-8px);
     box-shadow: var(--shadow-md);
-    border-top: 4px solid var(--noodle-gold);
-    transition: transform 0.3s ease;
 }
 
-.review-card:hover {
-    transform: translateY(-5px);
-}
-
-/* --- 7. Footer --- */
-footer {
-    background-color: #222;
-    color: #fff;
-    padding: 60px 0 20px;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-section h3 {
-    color: var(--noodle-gold);
-    margin-bottom: 20px;
-    font-size: 1.3rem;
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li {
-    margin-bottom: 12px;
-}
-
-.footer-section ul li a {
-    color: #bbb;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.footer-section ul li a:hover {
-    color: #fff;
-    padding-left: 5px;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 30px;
-    border-top: 1px solid #444;
-    font-size: 0.9rem;
-    color: #888;
-}
-
-/* --- 8. Buttons & Utilities --- */
+/* --- 7. Buttons & Utilities --- */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 30px;
+    padding: 14px 35px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     cursor: pointer;
     border: none;
-    gap: 10px;
+    gap: 12px;
+    white-space: nowrap;
 }
 
 .btn-primary {
     background-color: var(--primary-red);
-    color: white;
-    box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(178, 34, 34, 0.2);
 }
 
 .btn-primary:hover {
-    background-color: #8b0000;
-    transform: scale(1.05);
+    background-color: var(--primary-dark);
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(178, 34, 34, 0.3);
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+/* --- 8. Responsive Fixes (Stability focused) --- */
+@media (max-width: 992px) {
+    .container { padding: 0 25px; }
+    .navbar { padding: 0 20px; }
+    .navbar ul { gap: 15px; }
 }
 
-/* Utility Classes */
-.text-center { text-align: center; }
-.mt-20 { margin-top: 20px; }
-.mb-20 { margin-bottom: 20px; }
+@media (max-width: 768px) {
+    .navbar { height: 75px; }
+    .navbar ul { display: none; } /* ซ่อนเมนูมาตรฐานบนมือถือ */
+    section { padding: 60px 0; }
+    .grid-2, .grid-3 {
+        grid-template-columns: 1fr; /* ปรับเป็นคอลัมน์เดียวบนมือถือเพื่อความนิ่ง */
+    }
+}

@@ -18,16 +18,17 @@
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/img/banner.jpg');
             background-size: cover;
             background-position: center;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
             color: white;
+            border-bottom: 8px solid var(--noodle-gold);
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
             gap: 40px;
-            margin-top: -50px;
+            margin-top: -60px; /* ดึงการ์ดขึ้นไปทับ Hero นิดหน่อยให้ดูโมเดิร์น */
             position: relative;
             z-index: 10;
         }
@@ -36,7 +37,7 @@
             background: white;
             padding: 40px;
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
             border-bottom: 5px solid var(--primary-red);
         }
 
@@ -44,9 +45,10 @@
             background: white;
             padding: 15px;
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
             overflow: hidden;
-            height: 500px;
+            height: 550px;
+            border: 1px solid #eee;
         }
 
         .info-item {
@@ -54,6 +56,11 @@
             align-items: flex-start;
             gap: 20px;
             margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
         }
 
         .info-icon {
@@ -65,18 +72,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             flex-shrink: 0;
+            border: 1px solid rgba(178, 34, 34, 0.1);
         }
 
         .info-text h4 {
             margin-bottom: 5px;
-            color: #333;
-            font-size: 1.1rem;
+            color: var(--dark-text);
+            font-size: 1.15rem;
+            font-weight: 700;
         }
 
         .info-text p, .info-text a {
-            color: #666;
+            color: var(--light-text);
             text-decoration: none;
             font-size: 1.05rem;
             line-height: 1.6;
@@ -85,13 +94,16 @@
         .social-connect {
             margin-top: 40px;
             padding-top: 30px;
-            border-top: 1px solid #eee;
+            border-top: 2px dashed #eee;
         }
 
         @media (max-width: 992px) {
             .contact-grid {
                 grid-template-columns: 1fr;
                 margin-top: 20px;
+            }
+            .map-card {
+                height: 400px;
             }
         }
     </style>
@@ -104,29 +116,32 @@
     <main>
         <section class="contact-hero">
             <div class="container">
-                <h1>ยินดีต้อนรับสู่ครอบครัว ช.สหชัย</h1>
-                <p>แวะมาทาน หรือโทรสั่งล่วงหน้า เรายินดีให้บริการทุกท่านครับ</p>
+                <h1 style="font-size: 2.5rem; margin-bottom: 15px;">ยินดีต้อนรับสู่ครอบครัว ช.สหชัย</h1>
+                <p style="font-size: 1.2rem; opacity: 0.9;">แวะมาทาน หรือโทรสั่งล่วงหน้า เรายินดีให้บริการทุกท่านครับ</p>
             </div>
         </section>
 
-        <section class="container" style="padding-bottom: 80px;">
+        <section class="container" style="padding-bottom: 100px;">
             <div class="contact-grid">
                 <div class="contact-info-card">
-                    <h2 style="margin-bottom: 30px; color: var(--primary-red);">ช่องทางติดต่อ</h2>
+                    <h2 style="margin-bottom: 30px; color: var(--primary-red); border-left: 5px solid var(--noodle-gold); padding-left: 15px;">ช่องทางติดต่อ</h2>
                     
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-text">
                             <h4>ที่ตั้งร้าน</h4>
-                            <p id="display-address">กำลังโหลดที่อยู่...</p>
+                            <p class="display-address">กำลังโหลดที่อยู่...</p>
+                            <a href="https://maps.app.goo.gl/S4qP4RPhJk9rF8K5A" target="_blank" style="color: var(--primary-red); font-size: 0.9rem; font-weight: bold;">
+                                <i class="fas fa-directions"></i> คลิกเพื่อดูเส้นทาง
+                            </a>
                         </div>
                     </div>
 
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
                         <div class="info-text">
-                            <h4>เบอร์โทรศัพท์ (สั่งอาหาร/สอบถาม)</h4>
-                            <a href="#" class="display-phone" style="font-weight: bold; color: var(--primary-red); font-size: 1.3rem;">กำลังโหลด...</a>
+                            <h4>เบอร์โทรศัพท์ (สั่งอาหาร)</h4>
+                            <a href="tel:0836301174" class="display-phone" style="font-weight: 800; color: var(--primary-red); font-size: 1.5rem;">กำลังโหลด...</a>
                         </div>
                     </div>
 
@@ -139,24 +154,25 @@
                     </div>
 
                     <div class="social-connect">
-                        <h4>ติดตามความเคลื่อนไหว</h4>
-                        <div style="display: flex; gap: 15px; margin-top: 15px;">
-                            <a href="https://www.facebook.com/SahachaiNoodleTak" target="_blank" style="width: 45px; height: 45px; background: #1877f2; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                        <h4 style="margin-bottom: 15px;">ติดตามความเคลื่อนไหว</h4>
+                        <div style="display: flex; gap: 15px; align-items: center;">
+                            <a href="https://www.facebook.com/SahachaiNoodleTak" target="_blank" style="width: 45px; height: 45px; background: #1877f2; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(24,119,242,0.3);">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <div style="color: #666; font-size: 0.9rem; align-self: center;">Facebook: ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก</div>
+                            <div style="color: var(--dark-text); font-weight: 500;">FB: ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="map-card">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d3801.373406323455!2d99.1234567!3d16.8765432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e14fe000000000%3A0x0!2z4LiKLuC4quC4q-C4p-C4seC4iuC4pSDguYDguIHguLXguY_guKfguJvguLnguInguKHguLnguJTguYHguJTguIcg4LiILuC4leC4suC4gQ!5e0!3m2!1sth!2sth!4v1234567890" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3813.064506822818!2d99.1245781!3d16.872658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30dd932338f0f35b%3A0xc4f440590a93f412!2z4LiKLuC4quC4q-C4p-C4p-C4seC4oiDguYDguIHgu7Hgu7_guKfguJvguLnguKvguKHguLnguYjguJTguLXguI3guLQ!5e0!3m2!1sth!2sth!4v1710000000000!5m2!1sth!2sth" 
                         width="100%" 
                         height="100%" 
-                        style="border:0; border-radius: 20px;" 
+                        style="border:0;" 
                         allowfullscreen="" 
-                        loading="lazy">
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>

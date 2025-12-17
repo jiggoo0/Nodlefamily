@@ -14,67 +14,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
 
     <style>
-        /* ส่วน Hero ปรับให้ดึงภาพจาก assets/img/banner.jpg */
+        /* Hero Section Styling */
         .hero {
-            height: 80vh;
-            min-height: 550px;
+            height: 85vh;
+            min-height: 600px;
             background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), 
                         url('assets/img/banner.jpg') no-repeat center center;
             background-size: cover;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Effect: Parallax */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInDown 1s ease-out;
         }
 
         .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 4.2rem);
-            text-shadow: 2px 4px 15px rgba(0,0,0,0.6);
-            margin-bottom: 15px;
+            font-size: clamp(2.8rem, 8vw, 4.5rem);
+            text-shadow: 2px 4px 20px rgba(0,0,0,0.7);
+            margin-bottom: 20px;
             font-weight: 700;
         }
 
         .hero-content p {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            background: rgba(178, 34, 34, 0.85);
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            background: rgba(178, 34, 34, 0.95);
             display: inline-block;
-            padding: 8px 30px;
+            padding: 12px 35px;
             border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             backdrop-filter: blur(5px);
         }
 
-        /* ส่วน Family Section */
+        /* ส่วน Family Section ทับเกย Hero เพื่อมิติที่สวยงาม */
         .family-warmth-section {
-            margin-top: -80px;
+            margin-top: -100px;
             position: relative;
             z-index: 10;
             background: white;
-            padding: 60px 40px;
-            border-radius: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 80px 40px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            border-top: 8px solid var(--noodle-gold);
         }
 
-        .member-card {
-            text-align: center;
-            padding: 20px;
-            transition: transform 0.3s ease;
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .member-card img {
-            width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 8px solid #fff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        
-        /* Loading Animation */
         .loading-text {
-            color: #999;
+            color: #ccc;
+            font-size: 1.1rem;
             font-style: italic;
         }
     </style>
@@ -86,41 +83,41 @@
     
     <section class="hero">
         <div class="hero-content">
-            <h1>ช.สหชัย เกี๊ยวปูหมูแดง</h1>
-            <p>ตำนานความอร่อยคู่เมืองตาก โดยเฮียเนกและเจ๊ตั๊ก</p>
+            <h1>ช.สหชัย <span style="color: var(--noodle-gold);">เกี๊ยวปูหมูแดง</span></h1>
+            <p><i class="fas fa-certificate"></i> ตำนานความอร่อยคู่เมืองตาก โดยเฮียเนกและเจ๊ตั๊ก</p>
         </div>
     </section>
 
     <main class="container">
         <section class="family-warmth-section">
-            <div style="text-align: center; max-width: 850px; margin: 0 auto;">
-                <div style="color: var(--noodle-gold); font-size: 2.5rem; margin-bottom: 20px;">
-                    <i class="fas fa-heart"></i>
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <div style="color: var(--primary-red); font-size: 2.8rem; margin-bottom: 20px; opacity: 0.8;">
+                    <i class="fas fa-utensils"></i>
                 </div>
-                <h2 id="story-title" style="color: var(--primary-red); margin-bottom: 25px; font-size: 2.2rem;">
-                    <span class="loading-text">กำลังโหลดบันทึกความอร่อย...</span>
+                <h2 id="story-title" style="color: var(--primary-red); margin-bottom: 25px; font-size: 2.4rem; font-weight: 700;">
+                    <span class="loading-text">กำลังโหลดตำนานความอร่อย...</span>
                 </h2>
-                <p id="story-desc" style="font-size: 1.2rem; color: #444; line-height: 1.9; margin-bottom: 40px;">
-                </p>
+                <p id="story-desc" style="font-size: 1.25rem; color: var(--light-text); line-height: 1.9; margin-bottom: 50px;">
+                    </p>
             </div>
 
-            <div id="family-members" class="grid grid-2" style="margin-top: 20px; gap: 30px;">
+            <div id="family-members" class="grid grid-2" style="margin-top: 40px; gap: 40px;">
                 </div>
         </section>
 
         <div id="review-placeholder"></div>
         
-        <div style="text-align: center; margin: 40px 0 100px;">
-            <a href="services.html" class="btn btn-primary" style="padding: 18px 50px; font-size: 1.25rem; border-radius: 60px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px;">
-                <i class="fas fa-utensils"></i> ดูเมนูเด็ดทั้งหมดของเรา
+        <div style="text-align: center; margin: 60px 0 120px;">
+            <a href="services.html" class="btn btn-primary" style="padding: 20px 60px; font-size: 1.3rem; border-radius: 60px; text-decoration: none; display: inline-flex; align-items: center; gap: 15px; box-shadow: 0 10px 25px rgba(178, 34, 34, 0.3);">
+                <i class="fas fa-star" style="color: var(--noodle-gold);"></i> 
+                ดูเมนูเด็ดทั้งหมดของเรา
             </a>
         </div>
     </main>
 
     <footer id="footer-placeholder"></footer>
 
-    <script src="assets/js/render.js"></script>
-    <script src="assets/js/app.js"></script>
-
+    <script src="assets/js/render.js"></script> 
+    <script src="assets/js/app.js"></script>    
 </body>
 </html>

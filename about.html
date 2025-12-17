@@ -19,18 +19,20 @@
             background: linear-gradient(rgba(178, 34, 34, 0.9), rgba(139, 0, 0, 0.9)), url('assets/img/hero-bg.png');
             background-size: cover;
             background-position: center;
-            padding: 100px 0 140px;
+            background-attachment: fixed; /* ล็อกพื้นหลังให้นิ่งแบบ Parallax */
+            padding: 100px 0 160px;
             text-align: center;
             color: white;
+            border-bottom: 8px solid var(--noodle-gold);
         }
 
         /* Story Content Area */
         .story-container {
             background: white;
-            border-radius: 30px;
-            margin-top: -80px;
-            padding: 60px 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 40px;
+            margin-top: -100px; /* เกยขึ้นไปบน Hero */
+            padding: 80px 50px;
+            box-shadow: var(--shadow-md);
             position: relative;
             z-index: 5;
         }
@@ -41,45 +43,57 @@
         }
 
         .story-header h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             color: var(--primary-red);
             margin-bottom: 20px;
+            font-weight: 700;
         }
 
         .story-text {
             font-size: 1.2rem;
-            line-height: 2;
+            line-height: 2.1;
             color: #444;
-            max-width: 900px;
-            margin: 0 auto 50px;
-            text-indent: 2em;
+            max-width: 950px;
+            margin: 0 auto 60px;
+            text-indent: 2.5em; /* ย่อหน้าสวยๆ แบบไทย */
         }
 
         /* Highlight Boxes */
         .value-box {
-            background: var(--warm-cream, #fff9f0);
-            padding: 30px;
-            border-radius: 20px;
-            border-left: 5px solid var(--noodle-gold);
+            background: var(--warm-cream);
+            padding: 40px 30px;
+            border-radius: 25px;
+            border-bottom: 4px solid var(--noodle-gold);
             height: 100%;
-        }
-
-        /* Team Image Styling */
-        .team-grid {
-            margin-top: 60px;
-        }
-
-        .member-profile {
+            transition: var(--transition);
             text-align: center;
         }
 
-        .member-profile img {
-            width: 280px;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 30px; /* ทรงสี่เหลี่ยมมุมโค้งเพื่อให้ต่างจากหน้าแรก */
+        .value-box:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .value-box i {
+            font-size: 2.5rem;
             margin-bottom: 20px;
-            border: 10px solid white;
+            display: block;
+        }
+
+        /* Team Image Styling */
+        .member-profile {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .member-profile img {
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 40px; /* สี่เหลี่ยมมุมโค้งมน */
+            margin-bottom: 25px;
+            border: 12px solid white;
             box-shadow: var(--shadow-md);
         }
 
@@ -88,9 +102,20 @@
             font-weight: 700;
             color: var(--primary-red);
             font-style: italic;
-            font-size: 1.5rem;
-            margin-top: 40px;
+            font-size: 1.8rem;
+            margin: 60px 0 20px;
             text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .story-container {
+                padding: 40px 20px;
+                margin-top: -60px;
+            }
+            .story-text {
+                text-indent: 0;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -102,15 +127,15 @@
     <main>
         <section class="about-hero">
             <div class="container">
-                <h1 style="font-size: 3.5rem; margin-bottom: 10px;">เบื้องหลังความอร่อย</h1>
+                <h1 style="font-size: clamp(2.5rem, 8vw, 3.8rem); margin-bottom: 10px; font-weight: 700;">เบื้องหลังความอร่อย</h1>
                 <p style="font-size: 1.3rem; opacity: 0.9;">จากความตั้งใจเล็กๆ สู่ตำนาน 8 ปี คู่เมืองตาก</p>
             </div>
         </section>
 
-        <section class="container">
+        <section class="container" style="padding-bottom: 100px;">
             <div class="story-container">
                 <div class="story-header">
-                    <span style="color: var(--noodle-gold); font-size: 1.5rem;"><i class="fas fa-quote-left"></i></span>
+                    <span style="color: var(--noodle-gold); font-size: 2rem;"><i class="fas fa-quote-left"></i></span>
                     <h2 id="story-title">กำลังเปิดตำนานความอร่อย...</h2>
                 </div>
 
@@ -124,30 +149,30 @@
                     "อิ่มอร่อย อบอุ่น เหมือนทานที่บ้าน"
                 </div>
 
-                <hr style="margin: 60px 0; border: none; border-top: 1px dashed #ddd;">
+                <hr style="margin: 80px 0; border: none; border-top: 2px dashed #eee;">
 
                 <div class="grid grid-3">
                     <div class="value-box">
-                        <i class="fas fa-heart" style="font-size: 2rem; color: var(--primary-red); margin-bottom: 15px;"></i>
+                        <i class="fas fa-heart" style="color: var(--primary-red);"></i>
                         <h3>ปรุงด้วยหัวใจ</h3>
-                        <p>เราใส่ใจทุกรายละเอียด ตั้งแต่การเลือกวัตถุดิบจนถึงขั้นตอนการเสิร์ฟ</p>
+                        <p>เราใส่ใจทุกรายละเอียด ตั้งแต่การเลือกวัตถุดิบจนถึงขั้นตอนการเสิร์ฟถึงมือคุณ</p>
                     </div>
                     <div class="value-box">
-                        <i class="fas fa-star" style="font-size: 2rem; color: var(--noodle-gold); margin-bottom: 15px;"></i>
+                        <i class="fas fa-certificate" style="color: var(--noodle-gold);"></i>
                         <h3>คุณภาพคงที่</h3>
-                        <p>รักษามาตรฐานรสชาติให้เหมือนเดิมทุกวัน ตลอดระยะเวลา 8 ปีที่ผ่านมา</p>
+                        <p>รักษามาตรฐานรสชาติให้เหมือนเดิมทุกชาม ตลอดระยะเวลา 8 ปีที่ผ่านมา</p>
                     </div>
                     <div class="value-box">
-                        <i class="fas fa-smile-beam" style="font-size: 2rem; color: #e67e22; margin-bottom: 15px;"></i>
+                        <i class="fas fa-smile-wink" style="color: #e67e22;"></i>
                         <h3>บริการด้วยรอยยิ้ม</h3>
-                        <p>ลูกค้าทุกคนคือคนในครอบครัว เรายินดีต้อนรับทุกท่านเสมอ</p>
+                        <p>ลูกค้าทุกคนคือสมาชิกในครอบครัว เรายินดีต้อนรับและดูแลทุกท่านด้วยใจเสมอ</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="footer-placeholder" style="margin-top: 80px;"></footer>
+    <footer id="footer-placeholder"></footer>
 
     <script src="assets/js/render.js"></script>
     <script src="assets/js/app.js"></script>
