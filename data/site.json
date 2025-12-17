@@ -1,0 +1,21 @@
+{
+  "shop_name": "ช.สหชัย เกี๊ยวปูหมูแดง",
+  "branch": "จ.ตาก (สะพานกิตติขจร)",
+  "owner": "เฮียเนก & เจ๊ตั๊ก",
+  "phone": "083-630-1174",
+  "alt_phone": "083-XXX-XXXX",
+  "email": "contact@sahachaitak.com",
+  "address": "ตรงข้ามร้านทอง สินสุวรรณ 3 ต.ระแหง อ.เมือง จ.ตาก 63000",
+  "opening_hours": "11:00 - 20:00 น. (จันทร์ - เสาร์)",
+  "closed_on": "วันอาทิตย์",
+  "social": {
+    "facebook": "https://www.facebook.com/SahachaiNoodleTak",
+    "line": "@sahachaitak",
+    "messenger": "m.me/SahachaiNoodleTak"
+  },
+  "google_maps": "https://goo.gl/maps/YOUR_GOOGLE_MAPS_ID",
+  "meta": {
+    "description": "ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก บะหมี่ทำเองสูตรโบราณ หมูแดงอบน้ำผึ้ง และเกี๊ยวปูเนื้อแน่น เปิดมานานกว่า 8 ปี",
+    "keywords": "บะหมี่เกี๊ยวปู, หมูแดง, ร้านอาหารตาก, ช.สหชัย, เฮียเนก เจ๊ตั๊ก"
+  }
+}

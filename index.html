@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก โดยเฮียเนกและเจ๊ตั๊ก เปิดมานานกว่า 8 ปี ความอร่อยที่อบอุ่นเหมือนทานที่บ้าน">
+    <title>ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก | 8 ปีแห่งความอร่อย</title>
+    
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+
+    <style>
+        /* ส่วน Hero ปรับให้ดึงภาพจาก assets/img/banner.jpg */
+        .hero {
+            height: 80vh;
+            min-height: 550px;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), 
+                        url('assets/img/banner.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.2rem);
+            text-shadow: 2px 4px 15px rgba(0,0,0,0.6);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            background: rgba(178, 34, 34, 0.85);
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* ส่วน Family Section */
+        .family-warmth-section {
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .member-card {
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .member-card img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        /* Loading Animation */
+        .loading-text {
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header-placeholder"></header>
+    <nav id="navbar-placeholder"></nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ช.สหชัย เกี๊ยวปูหมูแดง</h1>
+            <p>ตำนานความอร่อยคู่เมืองตาก โดยเฮียเนกและเจ๊ตั๊ก</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="family-warmth-section">
+            <div style="text-align: center; max-width: 850px; margin: 0 auto;">
+                <div style="color: var(--noodle-gold); font-size: 2.5rem; margin-bottom: 20px;">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2 id="story-title" style="color: var(--primary-red); margin-bottom: 25px; font-size: 2.2rem;">
+                    <span class="loading-text">กำลังโหลดบันทึกความอร่อย...</span>
+                </h2>
+                <p id="story-desc" style="font-size: 1.2rem; color: #444; line-height: 1.9; margin-bottom: 40px;">
+                </p>
+            </div>
+
+            <div id="family-members" class="grid grid-2" style="margin-top: 20px; gap: 30px;">
+                </div>
+        </section>
+
+        <div id="review-placeholder"></div>
+        
+        <div style="text-align: center; margin: 40px 0 100px;">
+            <a href="services.html" class="btn btn-primary" style="padding: 18px 50px; font-size: 1.25rem; border-radius: 60px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px;">
+                <i class="fas fa-utensils"></i> ดูเมนูเด็ดทั้งหมดของเรา
+            </a>
+        </div>
+    </main>
+
+    <footer id="footer-placeholder"></footer>
+
+    <script src="assets/js/render.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</body>
+</html>

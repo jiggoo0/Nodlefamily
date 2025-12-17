@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="เมนูเด็ด ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก บะหมี่เกี๊ยวปู หมูแดงอบน้ำผึ้ง และเมนูต้มยำรสเด็ด">
+    <title>เมนูอร่อย | ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก</title>
+    
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+
+    <style>
+        .menu-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('assets/img/menu1.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .menu-category-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .menu-category-title h2 {
+            display: inline-block;
+            background: white;
+            padding: 0 30px;
+            color: var(--primary-red);
+            font-size: 2.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu-category-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 2px;
+            background: #eee;
+            z-index: 1;
+        }
+
+        /* Menu Item Card */
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #f5f5f5;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .menu-item-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .menu-item-price {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 1.2rem;
+            background: var(--warm-cream);
+            padding: 2px 12px;
+            border-radius: 10px;
+        }
+
+        .menu-item-desc {
+            font-size: 0.95rem;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .badge-recommend {
+            background: var(--noodle-gold);
+            color: #000;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header-placeholder"></header>
+    <nav id="navbar-placeholder"></nav>
+
+    <main>
+        <section class="menu-hero">
+            <div class="container">
+                <h1>เมนูเด็ด ช.สหชัย</h1>
+                <p>คัดสรรวัตถุดิบคุณภาพดี ปรุงสดใหม่ทุกชาม</p>
+            </div>
+        </section>
+
+        <section class="container" style="padding-bottom: 80px;">
+            <div id="menu-container">
+                <div style="text-align: center; padding: 100px 0;">
+                    <i class="fas fa-circle-notch fa-spin" style="font-size: 3rem; color: var(--primary-red);"></i>
+                    <p style="margin-top: 20px;">กำลังจัดเตรียมเมนูอร่อย...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer-placeholder"></footer>
+
+    <script src="assets/js/render.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        /**
+         * ฟังก์ชันพิเศษเฉพาะหน้า Services เพื่อ Render รายการเมนู
+         * ปกติจะรวมไว้ใน app.js แต่เขียนดักไว้ที่นี่เพื่อให้ Full Code สมบูรณ์
+         */
+        async function loadMenuServices() {
+            try {
+                const response = await fetch('./data/services.json');
+                if (!response.ok) return;
+                const data = await response.json();
+                
+                const container = document.getElementById('menu-container');
+                if (!container) return;
+
+                let htmlContent = '';
+
+                // วนลูปตามหมวดหมู่ (เช่น บะหมี่, เกี๊ยว, เครื่องดื่ม)
+                data.categories.forEach(cat => {
+                    htmlContent += `
+                        <div class="menu-category-title">
+                            <h2>${cat.name}</h2>
+                        </div>
+                        <div class="grid grid-3">
+                            ${cat.items.map(item => `
+                                <div class="menu-item">
+                                    <img src="assets/img/${item.img || 'logo.png'}" class="menu-item-img" alt="${item.name}" onerror="this.src='https://via.placeholder.com/300?text=ช.สหชัย'">
+                                    <div class="menu-item-content">
+                                        ${item.recommended ? `<span class="badge-recommend"><i class="fas fa-thumbs-up"></i> เมนูแนะนำ</span>` : ''}
+                                        <div class="menu-item-header">
+                                            <span class="menu-item-name">${item.name}</span>
+                                            <span class="menu-item-price">${item.price}.-</span>
+                                        </div>
+                                        <p class="menu-item-desc">${item.description || ''}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+
+                container.innerHTML = htmlContent;
+            } catch (err) {
+                console.error("Menu Load Error:", err);
+            }
+        }
+
+        // สั่งให้โหลดเมนูหลังจากที่หน้าเว็บพื้นฐานโหลดเสร็จ
+        window.addEventListener('componentLoaded', (e) => {
+            if (e.detail.fileName === 'navbar.html') {
+                loadMenuServices();
+            }
+        });
+    </script>
+
+</body>
+</html>

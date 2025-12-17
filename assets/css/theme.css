@@ -1,0 +1,169 @@
+/**
+ * assets/css/theme.css
+ * กำหนดอัตลักษณ์ (Identity) สีสัน และอารมณ์ของเว็บไซต์
+ * ธีม: ความอบอุ่น ความใส่ใจ และตำนานความอร่อย 8 ปี
+ */
+
+:root {
+    /* ชุดสีหลัก: แดงหมูแดงและเหลืองบะหมี่ทอง */
+    --primary-red: #b22222;    
+    --primary-dark: #8b0000;
+    --noodle-gold: #ffcc00;   
+    --gold-light: #ffdb4d;
+    --warm-cream: #fff5e6;    
+    --dark-text: #332211;
+    --light-text: #665544;
+    --white: #ffffff;
+    
+    /* การตั้งค่าเงาและขอบ */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 25px rgba(0,0,0,0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius-lg: 30px;
+    --radius-md: 15px;
+}
+
+/* --- 1. พื้นฐานการจัดรูปแบบ --- */
+body {
+    background-color: var(--warm-cream); /* พื้นหลังสีครีมอุ่น ช่วยให้อาหารดูน่าทาน */
+    color: var(--dark-text);
+    font-family: 'Sarabun', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- 2. Section: Story & Family (ส่วนเนื้อหาที่เน้นความอบอุ่น) --- */
+.family-warmth-section {
+    text-align: center;
+    padding: 80px 40px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    margin: 40px auto;
+    max-width: 1100px;
+    box-shadow: var(--shadow-md);
+    border-bottom: 6px solid var(--noodle-gold);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* เพิ่มลวดลายเบาๆ ที่พื้นหลัง section */
+.family-warmth-section::before {
+    content: 'ช.สหชัย';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 8rem;
+    color: rgba(178, 34, 34, 0.03);
+    font-weight: 800;
+    pointer-events: none;
+}
+
+.family-warmth-section h2 {
+    color: var(--primary-red);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.family-warmth-section p {
+    color: var(--light-text);
+    line-height: 1.9;
+    font-size: 1.15rem;
+}
+
+/* --- 3. Member Card System (การ์ดเฮียเนก-เจ๊ตั๊ก) --- */
+.member-card {
+    background: transparent;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.member-card:hover {
+    transform: translateY(-8px);
+}
+
+.member-card .member-img-frame {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* วงแหวนรอบรูป */
+.member-card .member-img-frame::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px dashed var(--noodle-gold);
+    border-radius: 50%;
+    transition: var(--transition);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.member-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 8px solid var(--white);
+    object-fit: cover;
+    box-shadow: var(--shadow-md);
+    background-color: var(--white);
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.member-card:hover img {
+    border-color: var(--noodle-gold);
+    box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+}
+
+.member-card:hover .member-img-frame::after {
+    border-color: var(--primary-red);
+    border-style: solid;
+}
+
+.member-card h3 {
+    margin-top: 15px;
+    font-size: 1.4rem;
+    color: var(--dark-text);
+    font-weight: 700;
+}
+
+.role-tag {
+    display: inline-block;
+    padding: 4px 15px;
+    background: var(--warm-cream);
+    color: var(--primary-red);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: 5px;
+    border: 1px solid rgba(178, 34, 34, 0.1);
+}
+
+/* --- 4. Responsive Helpers --- */
+@media (max-width: 768px) {
+    .family-warmth-section {
+        padding: 50px 25px;
+        margin: 20px 15px;
+        border-radius: 20px;
+    }
+    
+    .member-card img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .family-warmth-section h2 {
+        font-size: 1.8rem;
+    }
+}

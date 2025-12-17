@@ -1,0 +1,149 @@
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-container">
+        <div class="hero-badge">
+            <i class="fas fa-award"></i> ตำนานความอร่อย 8 ปี เมืองตาก
+        </div>
+        <h1 class="hero-title">ช.สหชัย <span class="text-gold">เกี๊ยวปูหมูแดง</span></h1>
+        <p class="hero-subtitle">"อิ่มอร่อย อบอุ่น เหมือนทานที่บ้าน โดยเฮียเนกและเจ๊ตั๊ก"</p>
+        
+        <div class="hero-actions">
+            <a href="services.html" class="btn btn-hero-primary">
+                <i class="fas fa-utensils"></i> ดูเมนูแนะนำ
+            </a>
+            <a href="contact.html" class="btn btn-hero-outline">
+                <i class="fas fa-map-marker-alt"></i> เส้นทางมาร้าน
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* สไตล์เฉพาะสำหรับ Hero Section */
+    .hero-section {
+        height: 80vh;
+        min-height: 550px;
+        background: url('assets/img/banner.jpg') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed; /* Parallax effect */
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        z-index: 1;
+    }
+
+    .hero-container {
+        position: relative;
+        z-index: 2;
+        color: white;
+        text-align: center;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background: var(--noodle-gold);
+        color: var(--primary-dark);
+        padding: 5px 20px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+        animation: fadeInUp 0.8s ease;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 800;
+        margin-bottom: 20px;
+        text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+        animation: fadeInUp 1s ease;
+    }
+
+    .text-gold {
+        color: var(--noodle-gold);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.1rem, 3vw, 1.5rem);
+        margin-bottom: 40px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.95;
+        animation: fadeInUp 1.2s ease;
+    }
+
+    /* Buttons in Hero */
+    .hero-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        animation: fadeInUp 1.4s ease;
+    }
+
+    .btn-hero-primary {
+        background: var(--primary-red);
+        color: white;
+        padding: 15px 35px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: var(--transition);
+        box-shadow: 0 5px 20px rgba(178, 34, 34, 0.4);
+    }
+
+    .btn-hero-outline {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+        padding: 13px 35px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .btn-hero-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+    }
+
+    .btn-hero-outline:hover {
+        background: white;
+        color: var(--primary-red);
+        transform: translateY(-3px);
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive ปรับให้เหมาะกับมือถือ */
+    @media (max-width: 768px) {
+        .hero-section {
+            height: 60vh;
+            background-attachment: scroll; /* ปิด parallax เพื่อความลื่นไหล */
+        }
+        .hero-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+        .btn-hero-primary, .btn-hero-outline {
+            width: 100%;
+            max-width: 280px;
+        }
+    }
+</style>

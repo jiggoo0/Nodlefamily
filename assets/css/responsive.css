@@ -1,0 +1,143 @@
+/**
+ * assets/css/responsive.css
+ * จัดการการแสดงผลบนอุปกรณ์ต่างๆ (Mobile, Tablet, Desktop)
+ * สำหรับเว็บไซต์ ช.สหชัย เกี๊ยวปูหมูแดง
+ */
+
+/* --- 1. Tablet & Small Desktop (ต่ำกว่า 1024px) --- */
+@media (max-width: 1024px) {
+    .container {
+        width: 92%;
+    }
+    
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr); /* ปรับจาก 3 เหลือ 2 คอลัมน์ */
+        gap: 20px;
+    }
+
+    .story-container {
+        padding: 40px 25px;
+    }
+}
+
+/* --- 2. Mobile Landscape & Large Phone (ต่ำกว่า 768px) --- */
+@media (max-width: 768px) {
+    /* Navbar: ปรับให้รองรับการแสดงผลแนวตั้ง */
+    .navbar {
+        flex-direction: column;
+        padding: 15px 5%;
+        text-align: center;
+    }
+
+    .navbar ul {
+        margin-top: 15px;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar ul li a {
+        font-size: 0.95rem;
+    }
+
+    /* Hero Section: ปรับขนาดให้พอดีหน้าจอมือถือ */
+    .hero {
+        height: 60vh;
+        min-height: 400px;
+        background-attachment: scroll; /* ปิด parallax บนมือถือเพื่อลดการกระตุก */
+    }
+
+    .hero-content h1 {
+        font-size: clamp(1.8rem, 6vw, 2.2rem);
+    }
+
+    .hero-content p {
+        padding: 6px 20px;
+        font-size: 1rem;
+    }
+
+    /* Grid Layout: ปรับเป็น 1 คอลัมน์ทั้งหมด */
+    .grid-3, .grid-2, #reviews-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* ส่วนเนื้อหาครอบครัวและสมาชิก */
+    .family-warmth-section {
+        margin-top: -40px;
+        padding: 40px 20px;
+    }
+
+    .member-card img {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* การ์ดติดต่อและแผนที่ในหน้า Contact */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+    }
+
+    .map-card {
+        height: 350px;
+    }
+
+    /* Footer: ปรับให้ตัวหนังสืออยู่กึ่งกลาง */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    /* Utilities: ทำให้ปุ่มกว้างเต็มหน้าจอเพื่อให้กดง่าย */
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+}
+
+/* --- 3. Small Mobile (ต่ำกว่า 480px) --- */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+
+    .navbar .logo {
+        font-size: 1.2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.7rem;
+    }
+
+    /* ลด Padding ของ Section เพื่อให้เนื้อหากระชับ */
+    section {
+        padding: 50px 0;
+    }
+
+    .story-text {
+        font-size: 1.05rem;
+        text-align: left;
+        text-indent: 0;
+    }
+
+    /* ปรับขนาดราคาในหน้าเมนูให้เด่นขึ้น */
+    .menu-item-price {
+        font-size: 1.1rem;
+    }
+}
+
+/* --- 4. Special: Landscape Mode (หน้าจอแนวนอนที่มีความสูงน้อย) --- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        height: auto;
+        padding: 80px 0;
+    }
+    
+    .navbar {
+        position: relative; /* ปิด sticky เพื่อไม่ให้บังเนื้อหาตอนหมุนจอ */
+    }
+}

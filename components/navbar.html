@@ -1,0 +1,131 @@
+<nav class="navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        
+        <a href="index.html" class="logo">
+            <img src="assets/img/logo.png" alt="ช.สหชัย เกี๊ยวปูหมูแดง" onerror="this.src='https://via.placeholder.com/50?text=ช'">
+            <div class="logo-text">
+                <span style="display: block; font-size: 1.4rem; line-height: 1;">ช.สหชัย</span>
+                <span style="display: block; font-size: 0.8rem; font-weight: normal; color: #666; letter-spacing: 1px;">เกี๊ยวปูหมูแดง</span>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html" id="nav-home">หน้าแรก</a></li>
+            <li><a href="services.html" id="nav-services">เมนูอร่อย</a></li>
+            <li><a href="about.html" id="nav-about">รู้จักเฮียเนก-เจ๊ตั๊ก</a></li>
+            <li><a href="contact.html" id="nav-contact">ที่ตั้งร้าน</a></li>
+        </ul>
+
+        <div class="nav-cta">
+            <a href="tel:0836301174" class="btn btn-primary display-phone" style="padding: 8px 20px; font-size: 0.95rem;">
+                <i class="fas fa-phone-alt"></i> 083-630-1174
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+<style>
+    /* ปรับแต่ง Navbar เพิ่มเติมจาก main.css */
+    .navbar {
+        height: 80px;
+        transition: var(--transition);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .navbar .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--primary-red);
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        color: var(--dark-text);
+        font-weight: 500;
+        position: relative;
+        transition: var(--transition);
+    }
+
+    /* เส้นใต้เมนูเมื่อ Hover */
+    .nav-links li a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-red);
+        transition: var(--transition);
+    }
+
+    .nav-links li a:hover::after,
+    .nav-links li a.active::after {
+        width: 100%;
+    }
+
+    .nav-links li a:hover {
+        color: var(--primary-red);
+    }
+
+    /* Responsive ปรับ Navbar สำหรับมือถือ */
+    @media (max-width: 992px) {
+        .nav-links {
+            gap: 15px;
+        }
+        .nav-links li a {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            height: auto;
+            padding: 15px 0;
+        }
+        .nav-links {
+            display: none; /* สำหรับโปรเจกต์นี้ในขั้นต้นซ่อนไว้ก่อน หรือเปลี่ยนเป็นปุ่มเมนู */
+        }
+        .logo-text {
+            text-align: left;
+        }
+    }
+</style>
+
+<script>
+    /**
+     * ระบบจัดการสถานะ Active ของเมนู
+     * ตรวจสอบว่าอยู่หน้าไหน แล้วไฮไลท์เมนูนั้น
+     */
+    function highlightCurrentPage() {
+        const path = window.location.pathname;
+        const page = path.split("/").pop();
+        
+        const menuMap = {
+            'index.html': 'nav-home',
+            '': 'nav-home',
+            'services.html': 'nav-services',
+            'about.html': 'nav-about',
+            'contact.html': 'nav-contact'
+        };
+
+        const activeId = menuMap[page];
+        if (activeId) {
+            const el = document.getElementById(activeId);
+            if (el) el.classList.add('active');
+        }
+    }
+
+    // ทำงานทันทีเมื่อ Navbar ถูกโหลดเข้า DOM
+    highlightCurrentPage();
+</script>

@@ -1,0 +1,200 @@
+<footer class="main-footer">
+    <div class="container footer-container">
+        
+        <div class="footer-section about-shop">
+            <h3 class="footer-title">ช.สหชัย เกี๊ยวปูหมูแดง</h3>
+            <p class="shop-tagline">"อิ่มอร่อย อบอุ่น เหมือนทานที่บ้าน"</p>
+            <p class="shop-history">ตำนานความอร่อยคู่เมืองตาก โดยเฮียเนกและเจ๊ตั๊ก มุ่งมั่นคัดสรรวัตถุดิบคุณภาพเพื่อส่งต่อความสุขผ่านมื้ออาหารมากว่า 8 ปี</p>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/SahachaiNoodleTak" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-line"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-section quick-links">
+            <h3 class="footer-title">เมนูแนะนำ</h3>
+            <ul>
+                <li><a href="services.html"><i class="fas fa-chevron-right"></i> บะหมี่เกี๊ยวปูพิเศษ</a></li>
+                <li><a href="services.html"><i class="fas fa-chevron-right"></i> หมูแดงย่างเตาถ่าน</a></li>
+                <li><a href="services.html"><i class="fas fa-chevron-right"></i> บะหมี่แห้งต้มยำ</a></li>
+                <li><a href="services.html"><i class="fas fa-chevron-right"></i> เกี๊ยวกุ้งคำโต</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section contact-info">
+            <h3 class="footer-title">ติดต่อเรา</h3>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span id="display-address-footer" class="display-address">ตรงข้ามร้านทอง สินสุวรรณ 3 จ.ตาก</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:0836301174" class="display-phone">083-630-1174</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <span class="display-time">เปิด จันทร์ - เสาร์ (11:00 - 20:00)</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 ช.สหชัย เกี๊ยวปูหมูแดง จ.ตาก - All Rights Reserved.</p>
+            <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px;">ปรุงด้วยหัวใจโดย เฮียเนก & เจ๊ตั๊ก (เปิดให้บริการมาแล้ว 8 ปี)</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .main-footer {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+        padding: 60px 0 0;
+        margin-top: 80px;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1.2fr;
+        gap: 40px;
+        padding-bottom: 50px;
+    }
+
+    .footer-title {
+        color: var(--noodle-gold);
+        font-size: 1.4rem;
+        margin-bottom: 25px;
+        font-weight: 700;
+        position: relative;
+    }
+
+    .footer-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary-red);
+    }
+
+    .shop-tagline {
+        color: white;
+        font-style: italic;
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+
+    .shop-history {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #bbb;
+        margin-bottom: 25px;
+    }
+
+    .footer-social {
+        display: flex;
+        gap: 15px;
+    }
+
+    .footer-social a {
+        width: 40px;
+        height: 40px;
+        background: #333;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+        background: var(--primary-red);
+        transform: translateY(-3px);
+    }
+
+    /* Quick Links */
+    .quick-links ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .quick-links ul li {
+        margin-bottom: 12px;
+    }
+
+    .quick-links ul li a {
+        color: #bbb;
+        text-decoration: none;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .quick-links ul li a:hover {
+        color: var(--noodle-gold);
+        padding-left: 8px;
+    }
+
+    /* Contact Info */
+    .contact-item {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: flex-start;
+    }
+
+    .contact-item i {
+        color: var(--primary-red);
+        margin-top: 5px;
+    }
+
+    .contact-item a {
+        color: #e0e0e0;
+        text-decoration: none;
+    }
+
+    .footer-bottom {
+        background-color: #111;
+        padding: 30px 0;
+        text-align: center;
+        border-top: 1px solid #222;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+        .footer-container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .footer-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .footer-social {
+            justify-content: center;
+        }
+
+        .contact-item {
+            justify-content: center;
+        }
+
+        .quick-links ul li a {
+            justify-content: center;
+        }
+    }
+</style>

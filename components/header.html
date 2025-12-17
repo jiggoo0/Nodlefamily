@@ -1,0 +1,55 @@
+<div class="top-bar" style="background-color: var(--primary-red); color: white; padding: 8px 0; font-size: 0.9rem;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        
+        <div class="top-info-left" style="display: flex; gap: 20px; align-items: center;">
+            <div class="info-item">
+                <i class="fas fa-phone-alt" style="margin-right: 8px; color: var(--noodle-gold);"></i>
+                <span>ติดต่อเฮียเนก/เจ๊ตั๊ก: </span>
+                <a href="tel:0836301174" class="display-phone" style="color: white; text-decoration: none; font-weight: bold;">
+                    083-630-1174
+                </a>
+            </div>
+            <div class="info-item d-none-mobile">
+                <i class="fas fa-clock" style="margin-right: 8px; color: var(--noodle-gold);"></i>
+                <span class="display-time">เปิดให้บริการ: 11:00 - 20:00 น. (จันทร์ - เสาร์)</span>
+            </div>
+        </div>
+
+        <div class="top-info-right" style="display: flex; gap: 15px; align-items: center;">
+            <span class="d-none-mobile" style="font-style: italic; opacity: 0.9;">"ตำนานความอร่อยคู่เมืองตาก"</span>
+            <div class="social-links" style="display: flex; gap: 12px; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 15px;">
+                <a href="https://www.facebook.com/SahachaiNoodleTak" target="_blank" title="Facebook" style="color: white; transition: 0.3s;">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" title="Line" style="color: white; transition: 0.3s;">
+                    <i class="fab fa-line"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    /* สไตล์เพิ่มเติมเฉพาะจุดสำหรับ Header */
+    .top-bar a:hover {
+        color: var(--noodle-gold) !important;
+    }
+
+    .social-links a:hover {
+        transform: translateY(-2px);
+    }
+
+    /* ซ่อนข้อมูลบางส่วนบนมือถือเพื่อความสะอาดตา */
+    @media (max-width: 768px) {
+        .d-none-mobile {
+            display: none;
+        }
+        .top-bar .container {
+            justify-content: center;
+        }
+        .top-info-left {
+            gap: 0;
+        }
+    }
+</style>

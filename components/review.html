@@ -1,0 +1,56 @@
+<section class="reviews-section" style="background-color: var(--warm-cream); padding: 100px 0;">
+    <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+            <span style="color: var(--primary-red); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;">คำยืนยันจากลูกค้า</span>
+            <h2 style="font-size: 2.5rem; color: var(--dark-text); margin-top: 10px;">ความประทับใจ <span style="color: var(--primary-red);">จากผู้ใช้บริการจริง</span></h2>
+            <div style="width: 80px; height: 3px; background: var(--noodle-gold); margin: 20px auto;"></div>
+        </div>
+
+        <div id="reviews-container" class="grid grid-3">
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #888;">
+                <i class="fas fa-quote-right" style="font-size: 2rem; opacity: 0.2; margin-bottom: 15px;"></i>
+                <p>กำลังโหลดรีวิวจากลูกค้าผู้มีอุปการคุณ...</p>
+            </div>
+        </div>
+
+        <div class="review-footer" style="text-align: center; margin-top: 60px; padding: 30px; background: white; border-radius: 20px; box-shadow: var(--shadow-sm);">
+            <p style="font-size: 1.1rem; color: var(--light-text);">
+                ร่วมแบ่งปันความประทับใจ หรือแนะนำติชมเราได้ที่หน้า 
+                <a href="https://www.facebook.com/SahachaiNoodleTak" target="_blank" style="color: var(--primary-red); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--noodle-gold);">Facebook Page</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* สไตล์เฉพาะสำหรับ Review Section ที่เพิ่มความนุ่มนวล */
+    .reviews-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* ตกแต่งพื้นหลังด้วยไอคอนจางๆ */
+    .reviews-section::after {
+        content: '\f10e'; /* fa-quote-right */
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        position: absolute;
+        bottom: -50px;
+        right: 20px;
+        font-size: 15rem;
+        color: rgba(0,0,0,0.03);
+        z-index: 0;
+    }
+
+    /* ข้อมูลรีวิวจะใช้ Class .review-card ที่เราตั้งค่าไว้ใน main.css และ theme.css */
+    #reviews-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+        .section-header h2 {
+            font-size: 1.8rem;
+        }
+    }
+</style>
